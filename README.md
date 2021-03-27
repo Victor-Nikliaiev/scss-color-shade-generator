@@ -45,4 +45,4 @@ This is for the animated particle background. Also folder `config` and according
 
 # Live Version
 
-Live version is: [here](https://link)
+Live version is: [here](http://scss-color-shade-generator-arhis.vercel.app/)
