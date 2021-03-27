@@ -1,5 +1,5 @@
 {
-  "name": "scss_color_generator",
+  "name": "scss_color_shade_generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,8 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "sass": "sass ./src/styles/App.scss ./src/styles/App.css --watch"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
