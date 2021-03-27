@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Lato&family=Montserrat&family=Dosis:wght@700&display=swap");
+
+$main-font: "Lato", sans-serif;
+$title-font: "Dosis", sans-serif;
+$input-font: "Cutive Mono", monospace;
+$button-font: "Montserrat", sans-serif;
+$border-color: rgb(114, 221, 248);
+$btn-generate-color: rgba(49, 138, 83, 0.76);
+$btn-copy-color: rgb(247, 129, 75);
+
+/*
+============
+General Styles
+============
+*/
+body {
+  font-size: 1.125rem;
+  background: rgb(27, 25, 32);
+  font-family: $main-font;
+}
+
+.background {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  height: 100vh;
+}

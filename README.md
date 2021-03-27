@@ -12,6 +12,7 @@
 2. You can see information about any color in palette, such as hex code and percent of changing from original base (darker and lighter)
 3. You can copy hex code just by clicking on color container.
 4. You can copy a set of pre-created colors as SCSS variables.
+5. When form is submitted there is a check for correctness of a typed color. If color is incorrect the field would become red-bordered.
 
 > ### **Full description:**
 
@@ -35,3 +36,11 @@ Here is described all types that's been used in the app.
 > ScssCode.tsx
 
 This component generates SCSS variables and provides coping it into a clipboard.
+
+> ParticleBackground.tsx
+
+This is for the animated particle background. Also folder `config` and accordingly `particle-config.ts`
+
+# Live Version
+
+Live version is: [here](https://link)

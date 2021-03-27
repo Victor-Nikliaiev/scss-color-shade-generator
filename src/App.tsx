@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Values from "values.js";
 import SingleColor from "./components/SingleColor";
 import ScssCode from "./components/ScssCode";
 import { Color, SetBoolState } from "./interfaces";
+import ParticleBackground from "./components/ParticleBackground";
 
 function App() {
   const getColorWithHex = (colors: Color[]): Color[] => {
@@ -12,9 +13,15 @@ function App() {
     });
     return hexColored;
   };
+
   const [color, setColor] = useState<string>("#f1257a");
   const [error, setError] = useState(false);
   const [colors, setColors] = useState<Color[]>([]);
+  const focusRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  useEffect(() => {
+    focusRef.current.focus();
+  }, []);
 
   const setPaletteColors = (): Color[] | undefined => {
     try {
@@ -57,35 +64,53 @@ function App() {
   };
   return (
     <>
-      <h1>SCSS Color shade generator</h1>
-      <form onSubmit={handleOnSubmit}>
-        <div className="input-group">
-          <input
-            type="text"
-            value={color}
-            onChange={handleOnChange}
-            className={`${error && "error"}`}
-          ></input>
-          <input type="color" value={color} onChange={handleOnChange}></input>
-          <button type="submit">submit</button>
-        </div>
-      </form>
-      {colors.length > 0 && (
-        <ScssCode colors={colors} effectCopyFunction={effectCopyFunction} />
-      )}
-      {colors.length > 0 && (
-        <section className="colors-container">
-          {colors.map((color) => {
-            return (
-              <SingleColor
-                key={Math.floor(Math.random() * Date.now())}
-                {...color}
-                effectCopyFunction={effectCopyFunction}
-              />
-            );
-          })}
+      <ParticleBackground />
+      <section className="main">
+        <div className="test"></div>
+        <header>
+          <h1 className="main__title">SCSS Color shade generator</h1>
+          <div className="outline"></div>
+          <form onSubmit={handleOnSubmit}>
+            <div className="main__input-group">
+              <input
+                ref={focusRef}
+                type="text"
+                value={color}
+                onChange={handleOnChange}
+                className={`main__textInput ${error ? "error" : ""}`}
+              ></input>
+              <input
+                className="main__paletteInput"
+                type="color"
+                value={color}
+                onChange={handleOnChange}
+              ></input>
+              <button className="btn btn__generate" type="submit">
+                generate
+              </button>
+            </div>
+          </form>
+        </header>
+
+        <section className="col-var-container">
+          {colors.length > 0 && (
+            <ScssCode colors={colors} effectCopyFunction={effectCopyFunction} />
+          )}
+          {colors.length > 0 && (
+            <section className="colors-container">
+              {colors.map((color) => {
+                return (
+                  <SingleColor
+                    key={Math.floor(Math.random() * Date.now())}
+                    {...color}
+                    effectCopyFunction={effectCopyFunction}
+                  />
+                );
+              })}
+            </section>
+          )}
         </section>
-      )}
+      </section>
     </>
   );
 }

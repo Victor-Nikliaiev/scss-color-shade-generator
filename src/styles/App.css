@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Lato&family=Montserrat&family=Dosis:wght@700&display=swap");
 *,
 ::after,
 ::before {
@@ -6,22 +7,283 @@
   box-sizing: border-box;
 }
 
-input {
-  outline: none;
+/*
+============
+General Styles
+============
+*/
+body {
+  font-size: 1.125rem;
+  background: #1b1920;
+  font-family: "Lato", sans-serif;
 }
 
+.background {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  height: 100vh;
+}
+
+/*
+==============
+Main Container
+==============
+*/
+.main {
+  overflow: hidden;
+  border-radius: 0.5em;
+  -webkit-box-shadow: 2px 5px 15px 4px #000000;
+  box-shadow: 2px 5px 15px 4px #000000;
+  align-items: center;
+  position: relative;
+  width: 65%;
+  min-width: 150px;
+  margin: 2rem auto;
+  opacity: 0.9;
+  background: #e6dadf;
+  padding: 0 0.5em 0.5em 0.5em;
+  height: fit-content;
+}
+.main header {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+.main__title {
+  font-family: "Dosis", sans-serif;
+  font-size: 2rem;
+  text-transform: capitalize;
+  min-width: 115%;
+  padding: 0.3em 0;
+  background: rgba(214, 158, 6, 0.239);
+  color: #1f1e20;
+}
+@media (max-width: 595px) {
+  .main__title {
+    font-size: 8vw;
+  }
+}
+.main .outline {
+  margin: 0.5em 0;
+  width: 10vh;
+  height: 0.3em;
+  background: #72ddf8;
+}
+.main__input-group {
+  width: 110%;
+  display: flex;
+  margin-top: 2em;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 560px) {
+  .main__input-group {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.main input {
+  transition: all 900ms;
+}
+.main__textInput {
+  transition: all 700ms;
+  font-size: 1.5rem;
+  font-family: "Lato", sans-serif;
+  padding: 0.1em;
+  color: #1b1920;
+  background: #f4f8f7;
+  outline: none;
+  border: 2px solid transparent;
+  width: 9ch;
+  max-width: 90%;
+  text-align: center;
+  font-family: "Cutive Mono", monospace;
+}
+.main__textInput:focus {
+  border-bottom: 2px solid #72ddf8;
+}
+.main__paletteInput {
+  cursor: pointer;
+  height: 2.5em;
+  margin-left: 0.8em;
+  outline: none;
+  border: 1px solid transparent;
+}
+.main__paletteInput:hover {
+  border: 1px solid #72ddf8;
+}
+@media (max-width: 560px) {
+  .main__paletteInput {
+    margin-left: 0;
+    margin-top: 1em;
+  }
+}
+.main .error {
+  border: 2px solid #f16b6b;
+}
+
+/*
+================
+Buttons Styles
+================
+*/
+.btn {
+  transition: all 300ms;
+  cursor: pointer;
+  font-size: 1.3rem;
+  align-self: center;
+  justify-self: center;
+  padding: 0.5em;
+  font-family: "Montserrat", sans-serif;
+  text-transform: capitalize;
+  border-radius: 0.2em;
+  background: none;
+  outline: none;
+}
+.btn__generate {
+  border: 1px solid rgba(49, 138, 83, 0.76);
+  padding: 0.3em;
+  color: rgba(49, 138, 83, 0.76);
+}
+.btn__generate:hover {
+  background: rgba(49, 138, 83, 0.76);
+  color: #fff;
+  border: 1px solid transparent;
+}
+@media (max-width: 560px) {
+  .btn__generate {
+    margin-top: 1em;
+  }
+}
+.btn__copy {
+  font-size: 0.8rem;
+  border: 1px solid #f7814b;
+  color: #f7814b;
+}
+.btn__copy:hover {
+  background: #f7814b;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+/*
+===================
+Main Colors Styles
+===================
+*/
+.col-var-container {
+  margin-top: 2em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width: 980px) {
+  .col-var-container {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+/*
+=================
+Variables Styles
+=================
+*/
+.var-group {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+  .var-group {
+    flex-flow: column nowrap;
+    justify-content: space-between;
+  }
+}
+.scss-variables {
+  width: 38%;
+}
+.scss-variables__title {
+  font-family: monospace;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 980px) {
+  .scss-variables {
+    width: 90%;
+  }
+}
+@media (max-width: 500px) {
+  .scss-variables__title {
+    margin-bottom: 0.4em;
+  }
+}
+/*
+====================
+Single Color Styles
+====================
+*/
 .colors-container {
+  width: 55%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
   gap: 0.5em;
 }
 
+@media (max-width: 980px) {
+  .colors-container {
+    width: 90%;
+    margin-top: 1em;
+  }
+}
 .single-color {
+  position: relative;
+  height: 6rem;
   cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.single-color::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  top: -1px;
+  z-index: -2;
+  background: linear-gradient(250deg, red, orange, yellow, green, #3636aa, blue, purple);
+  opacity: 0.4;
 }
 
-.error {
-  border: 2px solid red;
+.p-copy {
+  transition: all 800ms;
+  font-size: 1rem;
+  background: rgba(0, 7, 7, 0.082);
+  padding: 0.4em;
+  margin: 0.3em;
+  border: 1px solid rgba(255, 255, 255, 0.171);
 }
+
+/*
+** Thank you everyone for the inspiration!
+**
+** Created by Victor Nikliaiev (Arhis Alight)
+**
+*/
 
 /*# sourceMappingURL=App.css.map */

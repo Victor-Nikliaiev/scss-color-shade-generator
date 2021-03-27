@@ -1,0 +1,21 @@
+/*
+===================
+Main Colors Styles
+===================
+*/
+
+.col-var-container {
+  margin-top: 2em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width: 980px) {
+  .col-var-container {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}

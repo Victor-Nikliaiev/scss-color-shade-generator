@@ -1,0 +1,40 @@
+/*
+=================
+Variables Styles
+=================
+*/
+.var-group {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+  .var-group {
+    flex-flow: column nowrap;
+    justify-content: space-between;
+  }
+}
+
+.scss-variables {
+  width: 38%;
+  &__title {
+    font-family: monospace;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .scss-variables {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .scss-variables {
+    &__title {
+      margin-bottom: 0.4em;
+    }
+  }
+}

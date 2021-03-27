@@ -1,25 +1,14 @@
-*,
-::after,
-::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "./components/reset";
+@import "./components/GeneralStyles";
+@import "./components/MainContainer";
+@import "./components/Buttons";
+@import "./components/MainColorStyles";
+@import "./components/VariablesStyles";
+@import "./components/SingleColorStyles";
 
-input {
-  outline: none;
-}
-
-.colors-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
-  gap: 0.5em;
-}
-
-.single-color {
-  cursor: pointer;
-}
-
-.error {
-  border: 2px solid red;
-}
+/*
+** Thank you everyone for the inspiration!
+**
+** Created by Victor Nikliaiev (Arhis Alight)
+**
+*/

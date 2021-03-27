@@ -1,0 +1,59 @@
+/*
+====================
+Single Color Styles
+====================
+*/
+
+.colors-container {
+  width: 55%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  gap: 0.5em;
+}
+
+@media (max-width: 980px) {
+  .colors-container {
+    width: 90%;
+    margin-top: 1em;
+  }
+}
+
+.single-color {
+  position: relative;
+  height: 6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    top: -1px;
+    z-index: -2;
+    background: linear-gradient(
+      250deg,
+      red,
+      orange,
+      yellow,
+      green,
+      rgb(54, 54, 170),
+      blue,
+      purple
+    );
+    opacity: 0.4;
+  }
+}
+
+.p-copy {
+  transition: all 800ms;
+  font-size: 1rem;
+  background: rgba(0, 7, 7, 0.082);
+  padding: 0.4em;
+  margin: 0.3em;
+  border: 1px solid rgba(255, 255, 255, 0.171);
+}

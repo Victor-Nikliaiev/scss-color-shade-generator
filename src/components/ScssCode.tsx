@@ -20,12 +20,21 @@ const ScssCode = ({ colors, effectCopyFunction }: ColorsAndCopy) => {
 
   return (
     <div className="scss-variables">
-      <h2>CSS Variables</h2>
-      <button onClick={() => setIsCopied(() => true)}>copy to clipboard</button>
+      <div className="var-group">
+        <h2 className="scss-variables__title">CSS Variables</h2>
+        <button
+          className="btn btn__copy"
+          onClick={() => setIsCopied(() => true)}
+        >
+          Copy
+        </button>
+      </div>
+
       <SyntaxHighlighter
         language="scss"
         style={atelierCaveLight}
         showLineNumbers={true}
+        customStyle={{ width: "100%" }}
       >
         {str}
       </SyntaxHighlighter>
