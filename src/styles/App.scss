@@ -1,0 +1,25 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  outline: none;
+}
+
+.colors-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  gap: 0.5em;
+}
+
+.single-color {
+  cursor: pointer;
+}
+
+.error {
+  border: 2px solid red;
+}

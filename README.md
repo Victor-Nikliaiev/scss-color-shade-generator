@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# **Software Requirement Specification**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> ### **Name**: SCSS Color palette generator
 
-## Available Scripts
+> ### **Target:** This app is a color generator.
+>
+> The schema is pretty easy. You choose a color and the app generates a palette. 10 colors for the lighter samples and 10 for the darker ones.
 
-In the project directory, you can run:
+> ### **Features:**
 
-### `yarn start`
+1. You can generate scale of any color.
+2. You can see information about any color in palette, such as hex code and percent of changing from original base (darker and lighter)
+3. You can copy hex code just by clicking on color container.
+4. You can copy a set of pre-created colors as SCSS variables.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> ### **Full description:**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Every color is shown in own container and all containers are equal for their size among. Every container includes information about color in hex and percent of dark or light variation according to original base color. It's possible to use color palette to choose a base color, or type a hex color code in a field. The field and the palette are synchronous, all typing is double in both places.
+Also there is a previews for a chosen color.
 
-### `yarn test`
+> ### **Implementation:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We create two fields which use the same state. And as typing's going it's altering the mutual state. After a click on button called "generate" we get a color palette.
 
-### `yarn build`
+There are some additional files except `index.tsx` and `App.tsx`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> SingleColor.tsx
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This component implements all it requires to display a single color.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> interfaces.ts
 
-### `yarn eject`
+Here is described all types that's been used in the app.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> ScssCode.tsx
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This component generates SCSS variables and provides coping it into a clipboard.

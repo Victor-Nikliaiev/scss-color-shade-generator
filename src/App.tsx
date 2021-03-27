@@ -1,25 +1,92 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Values from "values.js";
+import SingleColor from "./components/SingleColor";
+import ScssCode from "./components/ScssCode";
+import { Color, SetBoolState } from "./interfaces";
 
 function App() {
+  const getColorWithHex = (colors: Color[]): Color[] => {
+    let hexColored = colors.map((color) => {
+      color.hexColor = color.hex;
+      return color;
+    });
+    return hexColored;
+  };
+  const [color, setColor] = useState<string>("#f1257a");
+  const [error, setError] = useState(false);
+  const [colors, setColors] = useState<Color[]>([]);
+
+  const setPaletteColors = (): Color[] | undefined => {
+    try {
+      const clr = getColorWithHex(new Values(color).all(10));
+      return clr;
+    } catch (error) {
+      console.log(error.message);
+      setError(true);
+    }
+  };
+
+  if (colors.length === 0) {
+    let cls = setPaletteColors();
+    if (cls) {
+      setColors(cls);
+    }
+  }
+
+  const effectCopyFunction = (str: string, setIsCopied: SetBoolState) => {
+    navigator.clipboard.writeText(str);
+    const time = setTimeout(() => {
+      setIsCopied(false);
+    }, 3000);
+    return () => {
+      clearTimeout(time);
+    };
+  };
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setError(false);
+    setColor(e.target.value);
+  };
+
+  const handleOnSubmit = (e: React.SyntheticEvent): void => {
+    e.preventDefault();
+    let cls = setPaletteColors();
+    if (cls) {
+      setColors(cls);
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>SCSS Color shade generator</h1>
+      <form onSubmit={handleOnSubmit}>
+        <div className="input-group">
+          <input
+            type="text"
+            value={color}
+            onChange={handleOnChange}
+            className={`${error && "error"}`}
+          ></input>
+          <input type="color" value={color} onChange={handleOnChange}></input>
+          <button type="submit">submit</button>
+        </div>
+      </form>
+      {colors.length > 0 && (
+        <ScssCode colors={colors} effectCopyFunction={effectCopyFunction} />
+      )}
+      {colors.length > 0 && (
+        <section className="colors-container">
+          {colors.map((color) => {
+            return (
+              <SingleColor
+                key={Math.floor(Math.random() * Date.now())}
+                {...color}
+                effectCopyFunction={effectCopyFunction}
+              />
+            );
+          })}
+        </section>
+      )}
+    </>
   );
 }
 
