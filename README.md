@@ -6,6 +6,8 @@
 >
 > The schema is pretty easy. You choose a color and the app generates a palette. 10 colors for the lighter samples and 10 for the darker ones.
 
+![SCSS Color Shade Generator](https://github.com/Victor-Nikliaiev/scss-color-shade-generator/blob/main/src/img/App.png?raw=true)
+
 > ### **Features:**
 
 1. You can generate scale of any color.
